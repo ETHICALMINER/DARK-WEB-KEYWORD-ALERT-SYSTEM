@@ -1,0 +1,32 @@
+import os
+
+# --- SYSTEM SETTINGS ---
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_PATH = os.path.join(BASE_DIR, "alerts.db")
+
+# --- PROXY SETTINGS ---
+# Local Tor SOCKS port (socks5h = DNS resolved through Tor, required for .onion)
+TOR_PROXY = "socks5h://127.0.0.1:9050"
+
+# --- TARGETS ---
+# Primary: Ahmia onion service (v3), reached via Tor
+ONION_URL = "http://juhanurmihxlp77nkq76byazcldy2hlmovfu2epvl5ankdibsot4csyd.onion/search/"
+
+# Fallback: Ahmia clearnet mirror (same index, no Tor needed)
+MIRROR_URL = "https://ahmia.fi/search/"
+
+# --- KEYWORDS TO MONITOR ---
+KEYWORDS = [
+    "leaked database",
+    "admin credentials",
+    "access logs",
+    "confidential",
+    "hacked",
+    "index of /",
+    # Add your organization-specific terms, e.g. "yourcompany.com"
+]
+
+# --- SCANNER SETTINGS ---
+ONION_TIMEOUT = 20         # seconds
+MIRROR_TIMEOUT = 15        # seconds
+DELAY_BETWEEN_QUERIES = 2  # seconds, be polite to the search service
